@@ -1,6 +1,5 @@
 from django.contrib import admin
 from product.models import Product,OrderProduct,Order,ShippingAddress,Payment
-
 class OrderAdmin(admin.ModelAdmin):
     list_display=('user', 'ordered','being_delivered','received','shipping_address','payment')
 
