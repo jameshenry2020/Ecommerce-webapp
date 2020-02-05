@@ -1,0 +1,147 @@
+{% extends "base.html"%}
+{% load static %}
+
+   {%block title%}  {%endblock title %}
+                        {%block intro %}
+                      <!-- Full Page Intro -->
+                      <div class="bg mask rgba-black-strong" style="background-image:linear-gradient(to right, rgba(14, 12, 12, 0.6), rgba(83, 81, 81,0.8)), url({%static 'imgs/bg2.jpg'%}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                        <!-- Mask & flexbox options-->
+                        <div class="mask rgba-black-light align-items-center">
+                          <!-- Content -->
+                          <div class="container">
+                            <!--Grid row-->
+                            <div class="row">
+                              <!--Grid column-->
+                              <div class="col-md-12 mb-3 white-text text-center Rtext">
+                                <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-2 pt-3 wow fadeInDown" data-wow-delay="0.3s"><strong>Order your meal in minutes</strong></h1>
+                                <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+                                <h5 class="text-uppercase mb-3 text-dark font-weight-bold wow fadeInDown" data-wow-delay="0.4s" style="font-family: 'Cookie', cursive;"><strong>order your delicious delicacy</strong></h5>
+                              
+                              </div>
+                              <!--Grid column-->
+                            </div>
+                            <!--Grid row-->
+                          </div>
+                          <!-- Content -->
+                        </div>
+                        <!-- Mask & flexbox options-->
+                      </div>
+                      <div class="container mt-3 pt-3">
+                          <h3 class="text-center text-capitalize font-weight-bold">choose from our delicious menu</h3>
+                      </div>
+                      <!-- Full Page Intro -->
+                  {% endblock intro %}
+                    <!-- Main navigation -->
+                    <!--Main Layout-->
+                    {% block content %}
+                      <main>
+                        <div class="container mt-0">
+                          <!--Grid row-->
+                          <div class="row py-3">
+                            <!--Grid column--> 
+                            <div class="col-md-12 p-3" style="background-color: #eceff1;">
+                              <div class="row">
+                               <div class="col-md-9 bg-white">
+                                  <div class="media overflow-hidden">
+                                      <img src="{{object.image.url}}" alt="" class="d-sm-flex align-self-start img-thumbnail mr-3">
+                                      <div class="media-body">
+                                        <h4 class="mt-0 font-weight-bold text-capitalize" style="font-family: 'Lobster', cursive;">{{object.name}}</h4>
+                                        <h4 class="text-muted">Category : <span class="badge badge-secondary p-2">{{object.get_category_display}}</span></h4>
+                                         <h6>Description:</h6>
+                                        <p>{{object.description}}</p>
+                                      </div>
+                                  </div>
+                               </div>
+                               <div class="col-md-3">
+                                  <div class="card">
+                                      <div class="card-body">
+                                          <h4 class="text-center" style="font-family: 'Lobster', cursive;">ToTal Price</h4>
+                                          <hr>
+                                          <p>price:  ${{object.price}}</p>
+                                          <p>Shipping fee: $0.00</p><hr>
+                                          
+                                          <a href="{{object.get_add_to_cart}}" class="btn btn-primary d-flex">Add to Cart <i class=" ml-2 fas fa-cart-plus"></i> </a>
+                                          
+                                      </div>
+
+                                  </div>
+                               </div>
+                              </div>  
+                                  
+                            </div>
+                                                
+                           </div>
+                         
+                          </div>
+                        </div>
+                        <!--Grid row-->
+
+      <div class="container p-4" style="background-color: #eceff1;">
+            <div class="jumbotron text-center m-3">
+                <h2 class="card-title h2">Similar delicious burger</h2>
+              <div class="row">
+                  <div class="col-md-4 col-sm-10">
+                      <div class="card">
+                          <div class="view overlay">
+                            <img class="card-img-top" src="{%static 'imgs/swish-burger.jpg'%}" alt="Card image cap">
+                            <a href="#!">
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+                          <div class="card-body">
+                            <h4 class="card-title">Smash burger</h4>
+                            <p class="card-text">Lorem nisi ut aliquip ex ea commodo consequat. .</p>
+                            <div class="botton">
+                              <h5 class="font-weight-bold text-warning"> $ 5 </h5> <a href="#" class="btn btn-outline-warning">Order Now</a>
+                              </div>
+                        </div>
+                          
+                        </div>
+                  </div>
+                  <div class="col-md-4 col-sm-10">
+                      <div class="card">
+                          <div class="view overlay">
+                            <img class="card-img-top border" src="{%static 'imgs/meatless.jpg'%}" alt="Card image cap">
+                            <a href="#!">
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+                          <div class="card-body">
+                            <h4 class="card-title">Swish Burger</h4>
+                            <p class="card-text">Lorem nisi ut aliquip ex ea commodo consequat. .</p>
+                            <div class="botton">
+                              <h5 class="font-weight-bold text-warning"> $ 5 </h5> <a href="#" class="btn btn-outline-warning">Order Now</a>
+                              </div>
+                        </div>
+                          
+                        </div>
+                  </div>
+                  <div class="col-md-4 col-sm-10">
+                      <div class="card">
+                          <div class="view overlay">
+                            <img class="card-img-top" src="{% static 'imgs/swish-burger.jpg'%}" alt="Card image cap">
+                            <a href="#!">
+                              <div class="mask rgba-white-slight"></div>
+                            </a>
+                          </div>
+                          <div class="card-body">
+                            <h4 class="card-title">swish-burger</h4>
+
+                            <p class="card-text">Lorem ipsum dolor sit amet.</p>
+                            <div class="botton">
+                              <h5 class="font-weight-bold text-warning"> $6</h5> <a href="#" class="btn btn-outline-warning">Order now</a>
+                              </div>
+                        </div>
+                          
+                        </div>
+                                    </div>
+                                </div>
+                              </div>
+                              
+    
+                        </div>
+                      </div>
+                    </main>
+                    {% endblock content %}
+                    <!--Main Layout-->
+  

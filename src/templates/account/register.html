@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+{% block title %}
+ create your account
+{% endblock title%}
+
+
+ {% block intro %}     
+        <!-- Navbar -->
+<!-- Full Page Intro -->
+<div class="bg" style="background-image:linear-gradient(to right, rgba(14, 12, 12, 0.6), rgba(83, 81, 81,0.8)),url({%static 'imgs/bg1.jpg'%}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+  <!-- Mask & flexbox options-->
+  <div class="mask rgba-black-light align-items-center">
+    <!-- Content -->
+    <div class="container">
+      <!--Grid row-->
+      <div class="row">
+        <!--Grid column-->
+        <div class="col-md-12 mb-3 white-text text-center Rtext">
+          <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-2 pt-3 wow fadeInDown" data-wow-delay="0.3s"><strong>create your account for free</strong></h1>
+          <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+          <h5 class="text-uppercase mb-3 text-dark font-weight-bold wow fadeInDown" data-wow-delay="0.4s" style="font-family: 'Cookie', cursive;"><strong>order your delicious delicacy</strong></h5>
+        
+        </div>
+        <!--Grid column-->
+      </div>
+      <!--Grid row-->
+    </div>
+    <!-- Content -->
+  </div>
+  <!-- Mask & flexbox options-->
+</div>
+{%endblock intro %}
+              <!-- Full Page Intro -->
+            
+            <!-- Main navigation -->
+            <!--Main Layout-->
+{% block content %}
+<main>
+<div class="container mt-0">
+  <!--Grid row-->
+  <div class="row py-3">
+    <!--Grid column-->
+    <div class="col-md-8 text-center">
+      <!-- Material form register -->
+    <div class="card">
+     <h5 class="card-header info-color white-text text-center py-3">
+        <strong>Sign up</strong>
+    </h5>
+
+<!--Card content-->
+<div class="card-body px-lg-5 pt-0">
+
+<!-- Form -->
+<form class="text-center" style="color: #757575;" action="" method="POST">
+  {% csrf_token %}
+<div class="form-row">
+  <div class="col">
+      <!-- First name -->
+      <div class="md-form">
+          <input type="text" name="first_name" id="materialRegisterFormFirstName" class="form-control">
+          <label for="materialRegisterFormFirstName">First name</label>
+      </div>
+  </div>
+  <div class="col">
+      <!-- Last name -->
+      <div class="md-form">
+          <input type="text" name="last_name" id="materialRegisterFormLastName" class="form-control">
+          <label for="materialRegisterFormLastName">Last name</label>
+      </div>
+  </div>
+</div>
+
+<!-- E-mail -->
+<div class="md-form mt-0">
+  <input type="email" name="email" id="materialRegisterFormEmail" class="form-control mb-2">
+  <label for="materialRegisterFormEmail">E-mail</label>
+</div>
+<!--Username-->
+<div class="md-form">
+<input type="text" name="username" id="materialRegisterFormUsername" class="form-control mb-2" aria-describedby="materialRegisterFormUsernameHelpBlock">
+<label for="materialRegisterFormUsername">Username</label>
+</div>
+
+<!-- Phone number -->
+<div class="md-form">
+  <input type="text" name="phone" id="materialRegisterFormPhone" class="form-control mb-2" aria-describedby="materialRegisterFormPhoneHelpBlock">
+  <label for="materialRegisterFormPhone">Phone number</label>
+</div>
+<!-- Password -->
+<div class="md-form">
+  <input type="password" name="password1" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock">
+  <label for="materialRegisterFormPassword">Password</label>
+  <small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+      At least 8 characters and 1 digit
+  </small>
+</div>
+<div class="md-form">
+<input type="password" name="password2" id="materialRegisterFormPassword" class="form-control" aria-describedby="materialRegisterFormPasswordHelpBlock">
+<label for="materialRegisterFormPassword">Confirm Password</label>
+<small id="materialRegisterFormPasswordHelpBlock" class="form-text text-muted mb-4">
+    At least 8 characters and 1 digit
+</small>
+</div>
+
+{% for field in register_form %}
+  <p>
+    {% for error in field.errors %}
+     <p style="color: red;">{{error}}</p>
+    {% endfor %}
+  </p>
+{%endfor %}
+{% if register_form.non_field_errors %}
+<div style="color: red;">
+  <p>{{register_form.non_field_errors}}</p>
+</div>
+{% endif %}
+
+<!-- Sign up button -->
+<button class="btn btn-outline-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+
+<hr>
+
+<!-- Terms of service -->
+<p>By clicking
+  <em>Sign up</em> you agree to our
+  <a href="" target="_blank">terms of service</a>
+
+</form>
+<!-- Form -->
+
+</div>
+
+</div>
+<!-- Material form register -->
+          </div>
+          <!--Grid column-->
+          <div class="col-md-4">
+            <h3 class="text-responsive text-capitalize p-0" style="font-family: 'Lobster', cursive;">registration is free and easy</h3>
+              <div>
+              <img src="{%static 'imgs/customer.jpg'%}" class="img-fluid z-depth-1" alt="Image of ballons flying over canyons with mask pattern one.">
+              <div class="mask pattern-1 flex-center waves-effect waves-light">
+                <p class="white-text">.pattern-1</p>
+              </div>
+              <h4>Contact Customer Support</h4>
+                <p>looking for help or have any question contact our 24/7 <a href="/contact.html">customer support team</a></p>
+              </div>
+
+          </div>
+        </div>
+        <!--Grid row-->
+      </div>
+    </main>
+{% endblock content %}
+  <!--Main Layout-->        
+    
+
+    

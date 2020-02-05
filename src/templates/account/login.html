@@ -1,0 +1,116 @@
+{% extends "base.html"%}
+
+{% load static %}
+
+ {%block title %}
+  Login into your Account
+ {%endblock title%}
+                    
+                      {% block intro  %}
+                      <!-- Full Page Intro -->
+                      <div class="bg" style="background-image:linear-gradient(to right, rgba(14, 12, 12, 0.6), rgba(83, 81, 81,0.8)), url({%static 'imgs/bg2.jpg'%}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                        <!-- Mask & flexbox options-->
+                        <div class="mask rgba-black-light align-items-center">
+                          <!-- Content -->
+                          <div class="container">
+                            <!--Grid row-->
+                            <div class="row">
+                              <!--Grid column-->
+                              <div class="col-md-12 mb-3 white-text text-center Rtext">
+                                <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-2 pt-3 wow fadeInDown" data-wow-delay="0.3s"><strong>your account is safe and secure</strong></h1>
+                                <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+                                <h5 class="text-uppercase mb-3 text-dark font-weight-bold wow fadeInDown" data-wow-delay="0.4s" style="font-family: 'Cookie', cursive;"><strong>order your delicious delicacy</strong></h5>
+                              
+                              </div>
+                              <!--Grid column-->
+                            </div>
+                            <!--Grid row-->
+                          </div>
+                          <!-- Content -->
+                        </div>
+                        <!-- Mask & flexbox options-->
+                      </div>
+                      <!-- Full Page Intro -->
+                   {% endblock intro %}
+                    <!-- Main navigation -->
+                    <!--Main Layout-->
+               {% block content %}
+          <main>
+              <div class="container mt-0">
+                <!--Grid row-->
+                <div class="row py-3">
+                  <!--Grid column-->
+                  <div class="col-md-8 text-center">
+                          
+            <!-- Material form login -->
+                   <div class="card">
+
+                <h5 class="card-header info-color white-text text-center py-4">
+                <strong>Sign in</strong>
+                </h5>
+            
+                <!--Card content-->
+                <div class="card-body px-lg-5 pt-0">
+                <!-- Form -->
+                  <form  class="text-center" style="color: #757575;"  method="POST">
+                      {%csrf_token %}
+                    <!-- Email -->
+                    <div class="md-form">
+                    <input type="email" name="email" id="materialLoginFormEmail" class="form-control">
+                   
+                    </div>
+            
+                    <!-- Password -->
+                    <div class="md-form">
+                    <input type="password" name="password" id="materialLoginFormPassword" class="form-control">
+                    
+                    </div>
+                       
+                    {% for field in login_form %}
+                      <p>
+                        {% for error in field.errors %}
+                             <p style="color: red;">{{error}}</p>
+                        {% endfor %}
+                      </p>
+                    {%endfor %}
+                    {% if login_form.non_field_errors %}
+                    <div style="color: red;">
+                      <p>{{login_form.non_field_errors}}</p>
+                    </div>
+                    {% endif %}
+                                
+                    <!-- Sign in button -->
+                    <button class="btn btn-info btn-rounded btn-block my-4 waves-effect z-depth-0" type="submit">Sign in</button>
+                    </div>
+                    <!-- Register -->
+                </form>
+                <!-- Form -->
+       
+                    <p>Not a member?
+                       <a href="{% url 'register'%}">Register</a>
+                    </p>
+                </div>
+        
+              </div>
+                         <!-- Material form login -->
+                          <!--Grid column-->
+                          <div class="col-md-4">
+                            <h3 class="text-responsive text-capitalize p-0" style="font-family: 'Lobster', cursive;">registration is free and easy</h3>
+                             <div>
+                              <img src="{% static 'imgs/customer.jpg'%}" class="img-fluid z-depth-1" alt="Image of ballons flying over canyons with mask pattern one.">
+                              <div class="mask pattern-1 flex-center waves-effect waves-light">
+                                <p class="white-text">.pattern-1</p>
+                              </div>
+                              <h4>Contact Customer Support</h4>
+                               <p>looking for help or have any question contact our 24/7 <a href="/contact.html">customer support team</a></p>
+                             </div>
+
+                          </div>
+                        </div>
+                        <!--Grid row-->
+                      </div>
+                    </main>
+                    {% endblock content %}
+                    <!--Main Layout-->
+                    
+             

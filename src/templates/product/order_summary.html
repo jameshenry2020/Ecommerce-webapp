@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} Your Cart Order {% endblock title %}
+
+{% block intro %}
+  
+ <!-- Full Page Intro -->
+ <div class="bg mask rgba-black-strong" style="background-image:linear-gradient(to right, rgba(14, 12, 12, 0.6), rgba(83, 81, 81,0.8)), url({%static 'imgs/bg2.jpg'%}); background-repeat: no-repeat; background-size: cover; background-position: center;">
+    <!-- Mask & flexbox options-->
+    <div class="mask rgba-black-light align-items-center">
+      <!-- Content -->
+      <div class="container">
+        <!--Grid row-->
+        <div class="row">
+          <!--Grid column-->
+          <div class="col-md-12 mb-3 white-text text-center Rtext">
+            <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-2 pt-3 wow fadeInDown" data-wow-delay="0.3s"><strong>Order your meal in minutes</strong></h1>
+            <hr class="hr-light my-4 wow fadeInDown" data-wow-delay="0.4s">
+            <h5 class="text-uppercase mb-3 text-dark font-weight-bold wow fadeInDown" data-wow-delay="0.4s" style="font-family: 'Cookie', cursive;"><strong>order your delicious delicacy</strong></h5>
+          
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Content -->
+    </div>
+    <!-- Mask & flexbox options-->
+  </div>
+  <div class="container mt-3 pt-3">
+      <h3 class="text-center text-capitalize font-weight-bold">Your Order Summary</h3>
+  </div>
+  <!-- Full Page Intro -->
+
+{% endblock intro %}
+
+{% block content %}
+ <div class="container mb-4">
+<div class="table-responsive text-nowrap">
+
+    <table class="table">
+      <thead class="black white-text">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Item Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Total Item Price</th>
+          
+         
+        </tr>
+      </thead>
+      <tbody>
+          {% for order_item in object.products.all %}
+        <tr>
+          <th scope="row">1</th>
+          <td>{{order_item.item.name}}</td>
+          <td>{{order_item.item.price}}</td>
+          <td> 
+              <a href="{%url 'remove-item-from-cart' order_item.item.slug%}"><i class="mr-2 fas fa-minus"></i></a>
+              {{order_item.quantity}}
+               <a href="{%url 'add-to-cart' order_item.item.slug %}"><i class="fas fa-plus"></i></a>
+            </td>
+          <td>{{order_item.get_total_item_price}}
+              <a href="{%url 'remove-from-cart' order_item.item.slug %}" style="color: red;"><i class="fas fa-trash float-right"></i></a>
+          </td>
+        </tr>
+         {% empty %}
+         <tr>
+             <td colspan="5">your cart is empty</td>
+         </tr>
+          <tr>
+              <td colspan="4"><a href="/" class="btn btn-primary">continue shopping</a></td>
+          </tr>
+        {% endfor %}
+        
+         <tr>
+             <td colspan="4"><b>Order Total</b></td>
+             <td>${{object.get_total}}</td>
+         </tr>
+         <tr>
+             <td colspan="5">
+                <a href="{% url 'checkout'%}" class="btn btn-warning float-right ml-3">Proceed to Checkout</a>
+                  <a href="/" class="btn btn-primary float-right ">Continue Shopping</a>
+                 
+            </td>
+         </tr>
+      </tbody>
+    </table>
+  
+  </div>
+</div>
+{% endblock content %}
